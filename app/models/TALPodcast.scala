@@ -12,7 +12,6 @@ object JSONConverter {
     val json = Json.parse(tal_json)
     val json_episode = (json \ "radio_episodes" \\ "radio_episode")
     val ep_list = json_episode.foldRight(List[Episode]())((js, l) => {
-      js \
       l
     })
     TALPodcast(ep_list)
