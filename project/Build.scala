@@ -8,6 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
+      "org.scalaj" %% "scalaj-time" % "0.6"
       // Add your project dependencies here,
     )
 
