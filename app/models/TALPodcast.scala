@@ -20,7 +20,7 @@ object TALJSON {
       val title = (js \ "title").as[String]
       val episode_number = (js \ "episode_number").as[Int]
 //      val description = (js \ "description").as[String]
-      description = "test"
+      val description = "test"
       l.::(Episode(air_date, title, description, episode_number))
     })
     new TALJSON(ep_list.reverse)
