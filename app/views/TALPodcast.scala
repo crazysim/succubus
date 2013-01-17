@@ -9,12 +9,7 @@ case class TALPodcast(rss: NodeSeq)
 object TALPodcast {
   def apply(tal_json: TALJSON) = {
     val xml =
-        <rss xmlns:dc="http://purl.org/dc/elements/1.1/"
-             xmlns:media="http://search.yahoo.com/mrss/"
-             xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://purl.org/dc/elements/1.1/"
-             version="2.0">
+      <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
           <channel>
             <title>This American Life</title>
             <link>http://www.thisamericanlife.org</link>
