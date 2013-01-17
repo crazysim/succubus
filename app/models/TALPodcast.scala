@@ -8,8 +8,8 @@ case class TALPodcast(episodes: List[Episode])
 
 case class Episode(air_date: DateTime, title: String, description: String, episode_number: Int)
 
-object JSONConverter {
-  def convert(tal_json: String) = {
+object TALPodcast {
+  def apply(tal_json: String) = {
     val json = Json.parse(tal_json)
     val json_episode = (json \ "radio_episodes" \\ "radio_episode")
     val ep_list = json_episode.foldLeft(List[Episode]())((l, js) => {
@@ -20,6 +20,6 @@ object JSONConverter {
       val description = (js \ "description").as[String]
       l.::(Episode(air_date, title, description, episode_number))
     })
-    TALPodcast(ep_list)
+    new TALPodcast(ep_list)
   }
 }
