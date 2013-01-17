@@ -8,14 +8,12 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-      "org.scalaj" %% "scalaj-time" % "0.6"
+      "org.scalaj" %% "scalaj-time" % "0.6",
+      "net.debasishg" % "redisclient_2.9.2" % "2.6"
       // Add your project dependencies here,
     )
 
-    val scala_redis = RootProject(uri("git://github.com/debasishg/scala-redis.git#master"))
-
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
       // Add your own project settings here      
-    ).dependsOn(scala_redis)
-
+    )
 }
