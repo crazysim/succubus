@@ -43,41 +43,26 @@ object TALPodcast {
             </itunes:summary>
             <itunes:category text="Society &amp; Culture"/>
             <itunes:category text="Arts"/>
-            <itunes:category text="News &amp; Politics"/>{for (episode <- tal_json.episodes) yield
+            <itunes:category text="News &amp; Politics"/>
+            {for (episode <- tal_json.episodes) yield
             <item>
-              <title>
-                {"#" + episode.episode_number + ": " + episode.title}
-              </title>
-              <link>http://www.thisamericanlife.org/radio-archives/episode/
-                {episode.episode_number}
-                /</link>
-              <description>
-                {episode.description}
-              </description>
-              <pubDate>
-                {RFC2822Format.print(episode.air_date)}
-              </pubDate>
+              <title>{"#" + episode.episode_number + ": " + episode.title}</title>
+              <link>http://www.thisamericanlife.org/radio-archives/episode/{episode.episode_number}/</link>
+              <description>{episode.description}</description>
+              <pubDate>{RFC2822Format.print(episode.air_date)}</pubDate>
               <dc:creator>Chicago Public Media</dc:creator>
-              <guid>
-                {episode.episode_number}
-              </guid>
+              <guid>{episode.episode_number}</guid>
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
-              <itunes:subtitle>
-                {episode.description.take(100)}
-              </itunes:subtitle>
+              <itunes:subtitle>{episode.description.take(100)}</itunes:subtitle>
               <itunes:author>Chicago Public Media</itunes:author>
-              <itunes:summary>
-                {episode.description}
-              </itunes:summary>
-
-
+              <itunes:summary>{episode.description}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              length="0" type="audio/mpeg"/>
-
-            </item>}
+            </item>
+            }
           </channel>
         </rss>
     new TALPodcast(xml)
