@@ -6,7 +6,7 @@ import org.joda.time.format.ISODateTimeFormat
 
 case class TALPodcast(episodes: List[Episode])
 
-case class Episode(datetime: DateTime, description: String)
+case class Episode(datetime: DateTime, title: String, description: String, episode_number: Int)
 
 object JSONConverter {
   def convert(tal_json: String) = {
@@ -15,8 +15,10 @@ object JSONConverter {
     val ep_list = json_episode.foldLeft(List[Episode]())((l, js) => {
       val orig_date = js \ "original_air_date"
       val datetime = ISODateTimeFormat.dateTimeNoMillis.parseDateTime(orig_date.as[String])
+      val title = (js \ "title").as[String]
+      val episode_number = (js \ "episode_number").as[Int]
       val description = (js \ "description").as[String]
-      l.::(Episode(datetime, description))
+      l.::(Episode(datetime, title, description, episode_number))
     })
     TALPodcast(ep_list)
   }

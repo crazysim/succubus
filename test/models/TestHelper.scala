@@ -1,8 +1,12 @@
 package models
 import scala.io.Source
 
-class TestHelper {
+object TestHelper {
   def prettyJson = {
-    Source.fromURL(getClass.getResource(res)).mkString
+    Source.fromURL(getClass.getResource("/pretty.json")).mkString
+  }
+
+  def test = {
+    "hey due"
   }
 }
