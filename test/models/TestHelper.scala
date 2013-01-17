@@ -2,7 +2,7 @@ package models
 import scala.io.Source
 
 class TestHelper {
-  def getResourceAsString(res: String): String = {
+  def prettyJson = {
     Source.fromURL(getClass.getResource(res)).mkString
   }
 }
