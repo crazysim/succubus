@@ -41,16 +41,14 @@ object TALPodcast {
               <description>{episode.description}</description>
               <pubDate>{RFC2822Format.print(episode.air_date)}</pubDate>
               <dc:creator>Chicago Public Media</dc:creator>
-              <guid>{episode.episode_number}</guid>
+              <guid isPermaLink="false">{episode.episode_number}</guid>
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
               <itunes:subtitle>{episode.description.take(100)}</itunes:subtitle>
-              <itunes:author>Chicago Public Media</itunes:author>
               <itunes:summary>{episode.description}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
-              <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
-                             length="0" type="audio/mpeg"/>
+              <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} type="audio/mpeg"/>
             </item>
             }
           </channel>
