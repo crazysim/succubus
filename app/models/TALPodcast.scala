@@ -4,11 +4,11 @@ import org.scala_tools.time.Imports._
 import play.api.libs.json._
 import org.joda.time.format.ISODateTimeFormat
 
-case class TALPodcast(episodes: List[Episode])
+case class TALJSON(episodes: List[Episode])
 
 case class Episode(air_date: DateTime, title: String, description: String, episode_number: Int)
 
-object TALPodcast {
+object TALJSON {
   def apply(tal_json: String) = {
     val json = Json.parse(tal_json)
     val json_episode = (json \ "radio_episodes" \\ "radio_episode")
@@ -20,6 +20,6 @@ object TALPodcast {
       val description = (js \ "description").as[String]
       l.::(Episode(air_date, title, description, episode_number))
     })
-    new TALPodcast(ep_list)
+    new TALJSON(ep_list)
   }
 }
