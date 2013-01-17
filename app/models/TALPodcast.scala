@@ -22,12 +22,22 @@ object TALJSON {
       val description = (js \ "description").as[String]
       l.::(Episode(air_date, title, description, episode_number))
     })
-    new TALJSON(ep_list)
+    new TALJSON(ep_list.reverse)
   }
 }
 
 object TALPodcast {
   def apply(tal_json: TALJSON) = {
-    new TALPodcast(<rss/>)
+    val xml =
+    <rss>
+      <channel>
+        {for (episode <- tal_json.episodes) yield
+          <item>
+            <title>{episode.title}</title>
+          </item>
+        }
+      </channel>
+    </rss>
+    new TALPodcast(xml)
   }
 }
