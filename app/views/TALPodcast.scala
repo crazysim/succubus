@@ -36,7 +36,7 @@ object TALPodcast {
               <description>{episode.description}</description>
               <pubDate>{RFC2822Format.print(episode.air_date)}</pubDate>
               <dc:creator>Chicago Public Media</dc:creator>
-              <guid isPermaLink="false">{episode.episode_number}</guid>
+              <guid isPermaLink="false">{episode.episode_number} from Hacked TAL</guid>
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
