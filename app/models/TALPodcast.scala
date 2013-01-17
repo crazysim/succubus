@@ -3,8 +3,10 @@ package models
 import org.scala_tools.time.Imports._
 import play.api.libs.json._
 import org.joda.time.format.ISODateTimeFormat
+import xml.NodeSeq
 
 case class TALJSON(episodes: List[Episode])
+case class TALPodcast(rss: NodeSeq)
 
 case class Episode(air_date: DateTime, title: String, description: String, episode_number: Int)
 
@@ -21,5 +23,11 @@ object TALJSON {
       l.::(Episode(air_date, title, description, episode_number))
     })
     new TALJSON(ep_list)
+  }
+}
+
+object TALPodcast {
+  def apply(tal_json: TALJSON) = {
+    new TALPodcast(<rss/>)
   }
 }
