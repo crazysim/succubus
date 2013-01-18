@@ -8,7 +8,7 @@ import xml.NodeSeq
 case class TALJSON(episodes: List[Episode])
 
 
-case class Episode(air_date: DateTime, title: String, description: String, episode_number: Int)
+case class Episode(air_date: DateTime, title: String, description: String, episode_number: Int, duration: Int)
 
 object TALJSON {
   def apply(tal_json: String) = {
@@ -19,9 +19,9 @@ object TALJSON {
       val air_date = ISODateTimeFormat.dateTimeNoMillis.parseDateTime(orig_date.as[String])
       val title = (js \ "title").as[String]
       val episode_number = (js \ "episode_number").as[Int]
-//      val description = (js \ "description").as[String]
-      val description = "test"
-      l.::(Episode(air_date, title, description, episode_number))
+      val description = (js \ "description").as[String]
+      val duration = (js \ "duration").as[Int]
+      l.::(Episode(air_date, title, description, episode_number, duration))
     })
     new TALJSON(ep_list.reverse)
   }
