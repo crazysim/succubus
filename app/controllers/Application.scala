@@ -1,10 +1,12 @@
 package controllers
 
 import play.api._
+import cache.Cache
 import play.api.mvc._
 import io.Source
 import views.TALPodcast
 import models.TALJSON
+import libs.concurrent.Akka
 
 object Application extends Controller {
   
@@ -15,5 +17,18 @@ object Application extends Controller {
   def test_podcast = Action{
     val json_str = Source.fromURL(getClass.getResource("/test/pretty.json")).mkString
     Ok(TALPodcast(TALJSON(json_str)).rss)
+  }
+
+  def podcast = Action {
+    val pod_promise = Akka.future {
+      Cache.getOrElse[String]("all_data", 600){
+        Source.fromURL("http://TAL:IraGlass@www.thisamericanapp.org/api/v2/sync_data/all_data").mkString
+      }
+    }
+    Async {
+      pod_promise.map(json_str => {
+        Ok(TALPodcast(TALJSON(json_str)).rss)
+      })
+    }
   }
 }
