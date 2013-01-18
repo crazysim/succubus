@@ -19,13 +19,9 @@ object TALPodcast {
             <description>Official free, weekly podcast of the award-winning radio show "This American Life." First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Radio. In mp3 and updated Mondays.</description>
             <language>en</language>
             <media:thumbnail url="http://www.thisamericanlife.org/sites/all/play_music/player-logo.png"/>
-            <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Society
-              &amp;
-              Culture</media:category>
+            <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Society &amp; Culture</media:category>
             <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Arts</media:category>
-            <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">News
-              &amp;
-              Politics</media:category>
+            <media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">News &amp; Politics</media:category>
             <itunes:author>Chicago Public Media</itunes:author>
             <itunes:explicit>no</itunes:explicit>
             <itunes:image href="http://www.thisamericanlife.org/sites/all/play_music/player-logo.png"/>
