@@ -26,7 +26,7 @@ object TALPodcast {
             <itunes:author>Chicago Public Media</itunes:author>
             <itunes:explicit>no</itunes:explicit>
             <itunes:image href="http://www.thisamericanlife.org/sites/all/play_music/player-logo.png"/>
-            <itunes:summary>Official free, weekly podcast of the award-winning radio show "This American Life." First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Media, and distributed by Public Radio International. In mp3 and updated Mondays.</itunes:summary>            <itunes:category text="Society &amp; Culture"/>
+            <itunes:summary>Hacked Podcast based on Android App. Resembles official free, weekly podcast of the award-winning radio show "This American Life." First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Media, and distributed by Public Radio International. In MP3 and updated Mondays.</itunes:summary>            <itunes:category text="Society &amp; Culture"/>
             <itunes:category text="Arts"/>
             <itunes:category text="News &amp; Politics"/>
             {for (episode <- tal_json.episodes) yield
