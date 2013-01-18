@@ -10,6 +10,7 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       "org.scalaj" %% "scalaj-time" % "0.6",
       "net.debasishg" % "redisclient_2.9.2" % "2.6",
+      "commons-httpclient" % "commons-httpclient" % "3.1",
       "org.scalaj" %% "scalaj-http" % "0.3.2"
       // Add your project dependencies here,
     )

@@ -22,8 +22,21 @@ object Application extends Controller {
 
   def podcast = Action {
     val pod_promise = Akka.future {
+
       Cache.getOrElse[String]("all_data", 600) {
-        Source.fromURL("http://TAL:IraGlass@www.thisamericanapp.org/api/v2/sync_data/all_data").mkString
+        import io.Source
+        import java.net.URL
+
+        val tal = "http://www.thisamericanapp.org/api/v2/sync_data/all_data"
+        val requestProperties = Map(
+          "Authorization" -> "Basic VEFMOklyYUdsYXNz"
+        )
+        val connection = new URL(tal).openConnection
+        requestProperties.foreach({
+          case (name, value) => connection.setRequestProperty(name, value)
+        })
+
+        Source.fromInputStream(connection.getInputStream).getLines().mkString("\n")
       }
     }
     Async {
