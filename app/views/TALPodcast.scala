@@ -40,7 +40,7 @@ object TALPodcast {
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
-              <itunes:subtitle>{episode.description.take(100)}</itunes:subtitle>
+              <itunes:subtitle>{episode.description}</itunes:subtitle>
               <itunes:summary>{episode.description}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
               <enclosure url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} length={episode.duration.toString} type="audio/mpeg"/>
