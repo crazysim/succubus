@@ -23,7 +23,7 @@ object Application extends Controller {
   def podcast = Action {
     val pod_promise = Akka.future {
 
-      Cache.getOrElse[String]("all_data", 600) {
+      Cache.getOrElse[String]("all_data", 3600) {
         import io.Source
         import java.net.URL
 
