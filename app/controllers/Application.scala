@@ -7,21 +7,22 @@ import io.Source
 import views.TALPodcast
 import models.TALJSON
 import libs.concurrent.Akka
+import play.api.Play.current
 
 object Application extends Controller {
-  
+
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def test_podcast = Action{
+  def test_podcast = Action {
     val json_str = Source.fromURL(getClass.getResource("/test/pretty.json")).mkString
     Ok(TALPodcast(TALJSON(json_str)).rss)
   }
 
   def podcast = Action {
     val pod_promise = Akka.future {
-      Cache.getOrElse[String]("all_data", 600){
+      Cache.getOrElse[String]("all_data", 600) {
         Source.fromURL("http://TAL:IraGlass@www.thisamericanapp.org/api/v2/sync_data/all_data").mkString
       }
     }
