@@ -3,6 +3,7 @@ package views
 import scala.xml.NodeSeq
 import models.TALJSON
 import helpers._
+import org.apache.commons.lang3.StringEscapeUtils
 
 case class TALPodcast(rss: NodeSeq)
 
@@ -40,8 +41,8 @@ object TALPodcast {
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
-              <itunes:subtitle>{episode.description}</itunes:subtitle>
-              <itunes:summary>{episode.description}</itunes:summary>
+              <itunes:subtitle>{StringEscapeUtils.escapeXml(episode.description)}</itunes:subtitle>
+              <itunes:summary>{StringEscapeUtils.escapeXml(episode.description)}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
               <enclosure url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} type="audio/mpeg"/>
               <itunes:duration>{episode.duration.toString}</itunes:duration>
