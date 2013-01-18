@@ -10,7 +10,7 @@ case class TALPodcast(rss: NodeSeq)
 
 object TALPodcast {
   def apply(tal_json: TALJSON) = {
-    val escp = StringEscapeUtils.ESCAPE_XML.`with`(NumericEntityEscaper.between(0x7f, Integer.MAX_VALUE) )
+    val escp = StringEscapeUtils.ESCAPE_XML
     val xml =
       <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
           <channel>
