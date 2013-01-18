@@ -4,11 +4,13 @@ import scala.xml.NodeSeq
 import models.TALJSON
 import helpers._
 import org.apache.commons.lang3.StringEscapeUtils
+import org.apache.commons.lang3.text.translate.NumericEntityEscaper
 
 case class TALPodcast(rss: NodeSeq)
 
 object TALPodcast {
   def apply(tal_json: TALJSON) = {
+    val escp = StringEscapeUtils.ESCAPE_XML.`with`(NumericEntityEscaper.between(0x7f, Integer.MAX_VALUE) )
     val xml =
       <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
           <channel>
@@ -34,15 +36,15 @@ object TALPodcast {
             <item>
               <title>{"#" + episode.episode_number + ": " + episode.title}</title>
               <link>http://www.thisamericanlife.org/radio-archives/episode/{episode.episode_number}/</link>
-              <description>{episode.description}</description>
               <pubDate>{RFC2822Format.print(episode.air_date)}</pubDate>
               <dc:creator>Chicago Public Media</dc:creator>
               <guid isPermaLink="false">{episode.episode_number} from Hacked TAL</guid>
               <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
-              <itunes:subtitle>{StringEscapeUtils.escapeXml(episode.description)}</itunes:subtitle>
-              <itunes:summary>{StringEscapeUtils.escapeXml(episode.description)}</itunes:summary>
+              <description>{escp.translate(episode.description)}</description>
+              <itunes:subtitle>{escp.translate(episode.description)}</itunes:subtitle>
+              <itunes:summary>{escp.translate(episode.description)}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
               <enclosure url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} type="audio/mpeg"/>
               <itunes:duration>{episode.duration.toString}</itunes:duration>
