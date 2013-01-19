@@ -14,7 +14,7 @@ object TALPodcast {
     val xml =
       <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
           <channel>
-            <title>This American Life</title>
+            <title>This American Life (Full Archive)</title>
             <link>http://www.thisamericanlife.org</link>
             <description>Official free, weekly podcast of the award-winning radio show "This American Life." First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Radio. In mp3 and updated Mondays.</description>
             <language>en</language>
