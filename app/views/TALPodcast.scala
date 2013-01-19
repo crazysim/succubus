@@ -42,6 +42,7 @@ object TALPodcast {
               <itunes:subtitle>{escp.translate(episode.description)}</itunes:subtitle>
               <itunes:summary>{escp.translate(episode.description)}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
+              <itunes:order>{episode.episode_number}</itunes:order>
               <enclosure url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} type="audio/mpeg"/>
               <itunes:duration>{episode.duration.toString}</itunes:duration>
             </item>
