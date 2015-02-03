@@ -1,6 +1,6 @@
 package models
 
-import org.scala_tools.time.Imports._
+import com.github.nscala_time.time.Imports._
 import play.api.libs.json._
 import org.joda.time.format.ISODateTimeFormat
 import xml.NodeSeq
