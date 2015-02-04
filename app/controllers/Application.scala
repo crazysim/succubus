@@ -3,11 +3,11 @@ package controllers
 import play.api._
 import cache.Cache
 import play.api.mvc._
-import io.Source
 import views.TALPodcast
 import models.TALJSON
-import libs.concurrent.Akka
+import scala.io.Source
 import play.api.Play.current
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Application extends Controller {
 
@@ -20,11 +20,10 @@ object Application extends Controller {
     Ok(TALPodcast(TALJSON(json_str)).rss)
   }
 
-  def podcast = Action {
-    val pod_promise = Akka.future {
-
+  def podcast = Action.async {
+    val pod_promise = scala.concurrent.Future {
       Cache.getOrElse[String]("all_data", 3600) {
-        import io.Source
+        import scala.io.Source
         import java.net.URL
 
         val tal = "http://www.thisamericanapp.org/api/v2/sync_data/all_data"
@@ -39,10 +38,9 @@ object Application extends Controller {
         Source.fromInputStream(connection.getInputStream).getLines().mkString("\n")
       }
     }
-    Async {
-      pod_promise.map(json_str => {
-        Ok(TALPodcast(TALJSON(json_str)).rss)
-      })
-    }
+
+    pod_promise.map(json_str => {
+      Ok(TALPodcast(TALJSON(json_str)).rss)
+    })
   }
 }
