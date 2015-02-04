@@ -35,7 +35,7 @@ object TALPodcast {
               <pubDate>{RFC2822Format.print(episode.air_date)}</pubDate>
               <dc:creator>Chicago Public Media</dc:creator>
               <guid isPermaLink="false">{episode.episode_number} from Hacked TAL</guid>
-              <media:content url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"}
+              <media:content url={episode.mp3_url}
                              type="audio/mpeg"/>
               <itunes:author>Chicago Public Media</itunes:author>
               <description>{escp.translate(episode.description)}</description>
@@ -43,7 +43,7 @@ object TALPodcast {
               <itunes:summary>{escp.translate(episode.description)}</itunes:summary>
               <itunes:explicit>no</itunes:explicit>
               <itunes:order>{episode.episode_number}</itunes:order>
-              <enclosure url={"http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" + episode.episode_number + ".mp3"} type="audio/mpeg"/>
+              <enclosure url={episode.mp3_url} type="audio/mpeg"/>
               <itunes:duration>{episode.duration.toString}</itunes:duration>
             </item>
             }
